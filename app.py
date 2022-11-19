@@ -61,4 +61,4 @@ if question or button:
         skip_special_tokens=True,
         clean_up_tokenization_spaces=True,
     )
-    st.write("Answer: ", output)
+    st.write("Answer:\n ", output)
