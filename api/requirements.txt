@@ -1,0 +1,5 @@
+adapter-transformers==2.2.0
+fastapi
+python-dotenv
+colabcode
+pydantic
