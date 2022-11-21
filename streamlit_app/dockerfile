@@ -7,6 +7,7 @@ EXPOSE 8080
 # COPY streamlit_app/requirements.txt requirements.txt
 COPY qaapi qaapi
 COPY streamlit_app streamlit_app
+COPY .env .env
 RUN pip install -U pip
 RUN pip install -r streamlit_app/requirements.txt
 
@@ -15,4 +16,4 @@ RUN pip install -e qaapi
 WORKDIR .
 
 # Run
-ENTRYPOINT ["streamlit", "run", "streamlit_app/app.py", "--server.port=8080", "--server.address=0.0.0.0"]
+ENTRYPOINT ["python", "-m", "streamlit", "run", "streamlit_app/app.py", "--server.port=8080", "--server.address=0.0.0.0"]
