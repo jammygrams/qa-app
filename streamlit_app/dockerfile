@@ -1,0 +1,18 @@
+FROM python:3.10
+
+# Expose port you want your app on
+EXPOSE 8080
+
+# Upgrade pip and install requirements
+# COPY streamlit_app/requirements.txt requirements.txt
+COPY qaapi qaapi
+COPY streamlit_app streamlit_app
+RUN pip install -U pip
+RUN pip install -r streamlit_app/requirements.txt
+
+# Copy app code and set working directory
+RUN pip install -e qaapi
+WORKDIR .
+
+# Run
+ENTRYPOINT ["streamlit", "run", "streamlit_app/app.py", "--server.port=8080", "--server.address=0.0.0.0"]
