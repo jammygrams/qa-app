@@ -15,7 +15,11 @@ PRETRAINED_MODEL_NAME = "facebook/bart-large"
 ADAPTER_MODEL_NAME = "jammygrams/bart-qa"
 ADAPTER_NAME = "narrativeqa"
 
-app = FastAPI(title="adapter-transformer for question answering, trained on ")
+app = FastAPI(
+  title="adapter-transformer for question answering",
+  description="bart model, adapter trained on narrativeqa dataset",
+  version="0.0"
+)
 
 model, tokenizer = None, None
 
