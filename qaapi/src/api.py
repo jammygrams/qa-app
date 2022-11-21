@@ -3,8 +3,8 @@ from dotenv import load_dotenv
 from fastapi import FastAPI
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 
-from api.utils import format_text_for_model
-from api.models import QuestionAnswerData
+from qaapi.src.utils import format_text_for_model
+from qaapi.src.models import QuestionAnswerData
 
 dotenv_path = os.path.join(os.path.dirname(__file__), ".env")
 load_dotenv(dotenv_path)
@@ -32,7 +32,7 @@ def load_model():
 @app.post("/api", tags=["prediction"])
 async def get_prediction(data: QuestionAnswerData):
   question, title, document = dict(data)["question"], dict(data)["title"], dict(data)["document"]
-  input_string = format_text_for_model(title, document, question)
+  input_string = format_text_for_model(title=title, document=document, question=question)
   # test_sample = tokenizer([user_input], truncation=True, max_length=1024, return_tensors='pt')
   tokenized_input = tokenizer([input_string], return_tensors="pt")
   prediction = model.generate(

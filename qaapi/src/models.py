@@ -3,5 +3,5 @@ from pydantic import BaseModel
 
 class QuestionAnswerData(BaseModel):
     question: str
-    title: Optional[str]
+    title: str
     document: str
