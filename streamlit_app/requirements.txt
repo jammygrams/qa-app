@@ -1,4 +1,4 @@
 python-dotenv
-pydantic
+pydantic # hack until figure out proper repo structure
 streamlit
 requests
