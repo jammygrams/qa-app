@@ -7,5 +7,12 @@
 2. run streamlit app
     * Run streamlit app...
         * locally, `python -m streamlit run streamlit_app/app.py` (opening with `streamlit ...` doesn't work strangely)
-        * TODO: streamlit cloud.  Doesn't work with multiple folders?
+        * TODO: streamlit cloud.  App cannot import code from other folders?
     * past the **ngrok url** into the streamlit app 
+
+
+#### Building docker image for Streamlit app on GCP
+Ref: https://www.artefact.com/blog/how-to-deploy-and-secure-your-streamlit-app-on-gcp/
+1. `docker build -t eu.gcr.io/qa-app-369311/streamlit:v1 -f streamlit_app/dockerfile .`
+1. `docker run -p 8080:8080 eu.gcr.io/qa-app-369311/streamlit:v2` to make sure it works
+1. `docker push eu.gcr.io/qa-app-369311/streamlit:v1`
