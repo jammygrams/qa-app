@@ -1,5 +1,6 @@
-adapter-transformers==2.2.0
+adapter-transformers
 fastapi
 python-dotenv
 colabcode
 pydantic
+uvicorn

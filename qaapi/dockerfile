@@ -1,0 +1,22 @@
+FROM bitnami/pytorch:latest
+
+EXPOSE 8080
+
+ENV PYTHONUNBUFFERED True
+
+COPY . ./
+
+WORKDIR .
+
+ENV PORT 8080
+
+# Note: --no-cache-dir to keep size down
+RUN pip install --no-cache-dir -r qaapi/requirements.txt
+# TODO: need to use root otherwise permission error; fix in future
+USER root
+RUN pip install -e qaapi
+
+CMD exec uvicorn qaapi.src.api:app --host 0.0.0.0 --port ${PORT} --workers 1
+
+
+
